@@ -1,0 +1,26 @@
+{
+	"name": "AXH Batcher",
+	"version": "1.0",
+	"description": "Makes a .csv file from a PFE invoice for upload to AXH",
+	"permissions": ["activeTab", "declarativeContent", "storage"],
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	/* "page_action": */
+	"browser_action": {
+		"default_title": "AXH Batcher",
+		"default_popup": "popup.html"
+	},
+	"commands": {
+		/* "_execute_page_action" */
+		"_execute_browser_action": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+B",
+				"mac": "MacCtrl+Shift+B"
+			}
+		}
+	},
+	"options_page": "options.html",
+	"manifest_version": 2
+}
