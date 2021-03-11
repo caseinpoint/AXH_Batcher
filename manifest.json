@@ -1,23 +1,27 @@
 {
 	"name": "AXH Batcher",
 	"version": "1.0",
-	"description": "Makes a .csv file from a PFE invoice for upload to AXH",
-	"permissions": ["activeTab", "declarativeContent", "storage"],
+	"description": "Makes a .csv file from a PFE invoice for upload to AXH.\nCoded by Drue Gilbert",
+	"permissions": ["declarativeContent", "storage"],
 	"background": {
-		"scripts": ["background.js"],
+		"scripts": ["scripts/background.js"],
 		"persistent": false
 	},
 	/* "page_action": */
 	"browser_action": {
 		"default_title": "AXH Batcher",
-		"default_popup": "popup.html"
+		"default_popup": "popup.html",
+		"default_icon": {
+			"64": "icons/route-64px.png"
+			/* image credit: https://icons8.com/icons/set/track-order */
+		}
 	},
 	"commands": {
 		/* "_execute_page_action" */
 		"_execute_browser_action": {
 			"suggested_key": {
-				"default": "Ctrl+Shift+B",
-				"mac": "MacCtrl+Shift+B"
+				"default": "Ctrl+B",
+				"mac": "MacCtrl+B"
 			}
 		}
 	},
