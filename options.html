@@ -10,6 +10,45 @@
 	<body>
 		<div class="container">
 			<h1 class="my-2">AXH Batcher Options Page</h1>
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<form id="options_form" action="">
+						<div class="mb-3">
+							<label class="form-label" for="storeNumber">Warehouse Number: (required)</label>
+							<input id="storeNumber" class="form-control" type="text" name="storeNumber" required>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="pickup_street">Pickup Street: (required)</label>
+							<input id="pickup_street" class="form-control" type="text" name="pickup_street" required>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="pickup_street2">Pickup Street 2: (optional)</label>
+							<input id="pickup_street2" class="form-control" type="text" name="pickup_street2" placeholder="example: Receiving door">
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="pickup_city">Pickup City: (required)</label>
+							<input id="pickup_city" class="form-control" type="text" name="pickup_city" required>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="pickup_state">Pickup State: (required)</label>
+							<input id="pickup_state" class="form-control" type="text" name="pickup_state" required>
+						</div>
+						<div class="mb-3">
+							<label class="form-label" for="pickup_zipcode">Pickup Zipcode: (required)</label>
+							<input id="pickup_zipcode" class="form-control" type="text" name="pickup_zipcode" required>
+						</div>
+						<div class="mb-4">
+							<label class="form-label" for="storePhone">Store Phone: (required)</label>
+							<input id="storePhone" class="form-control" type="tel" name="storePhone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+							<p class="form-text">required format: 510-609-3600</p>
+						</div>
+						<div class="d-grid">
+							<button id="options_form_submit" class="btn btn-success" type="submit">Save</button>
+						</div>
+					</form>
+					<p id="success" class="text-success mt-2 visually-hidden">Options saved</p>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

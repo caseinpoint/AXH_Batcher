@@ -8,21 +8,21 @@
 		<script src="./scripts/popup.js" charset="utf-8"></script>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container-fluid">
 			<h3 class="text-primary mt-1">PFE to AXH Batcher</h3>
-			<form id="order_form" action="">
+			<form id="batch_form" action="">
 				<div class="input-group input-group-sm mb-1">
-					<span class="input-group-text">Number of Bags:</span>
-					<input id="num_bag" class="form-control" name="num_bag" type="number" value="0" min="0">
+					<span class="input-group-text">Number of Bags:&ensp;</span>
+					<input id="numBags" class="form-control" name="numBags" type="number" value="0" min="0">
 				</div>
 				<div class="input-group input-group-sm mb-1">
 					<span class="input-group-text">Number of Boxes:</span>
-					<input id="num_box" class="form-control" name="num_box" type="number" value="0" min="0">
+					<input id="numBoxes" class="form-control" name="numBoxes" type="number" value="0" min="0">
 				</div>
-				<div class="form-check form-switch mb-1">
-					<label class="form-check-label" for="frozen">Contains Frozen</label>
+				<!-- <div class="form-check form-switch mb-1">
+					<label class="form-check-label" for="frozen">Includes Frozen</label>
 					<input id="frozen" class="form-check-input" name="frozen" type="checkbox">
-				</div>
+				</div> -->
 				<div class="d-grid mb-1">
 					<button id="order_form_submit" class="btn btn-sm btn-primary" type="submit">Make Batch</button>
 				</div>
