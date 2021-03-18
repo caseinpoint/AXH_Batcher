@@ -14,11 +14,15 @@ $(document).ready(() => {
 		batchInfo['numBoxes'] = parseInt($('#numBoxes').val());
 		batchInfo['frozen'] = ($('#batch_form').serializeArray().length == 3) ? true : false;
 
-		chrome.tabs.query({ active: true, currentWindow: true }, (results) => {
-			console.log('tab id: ' + results[0].id);
-			chrome.tabs.sendMessage(results[0].id, { storeInfo: storeInfo, batchInfo: batchInfo }, (response) => {
-				console.log(response);
+		if (batchInfo['numBags'] === 0 && batchInfo['numBoxes'] === 0) {
+			// TODO: display validation error
+		} else {
+			chrome.tabs.query({ active: true, currentWindow: true }, (results) => {
+				console.log('tab id: ' + results[0].id);
+				chrome.tabs.sendMessage(results[0].id, { storeInfo: storeInfo, batchInfo: batchInfo }, (response) => {
+					console.log(response);
+				});
 			});
-		});
+		}
 	});
 });
