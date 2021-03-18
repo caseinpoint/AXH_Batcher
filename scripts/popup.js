@@ -2,14 +2,8 @@ $(document).ready(() => {
 	// get pickup info from settings
 	var storeInfo = {};
 	chrome.storage.sync.get(['pickup_street', 'pickup_street2', 'pickup_city', 'pickup_state', 'pickup_zipcode', 'storeNumber', 'storePhone'], (result) => {
-		console.log(result);
 		storeInfo = result;
 	});
-
-	// scrape invoice and return dropoff info
-	function getDropoffInfo() {
-
-	}
 
 	// build csv and return encoded URI
 	function getCSV(dropoffInfo, numBags, numBoxes) {
@@ -20,5 +14,14 @@ $(document).ready(() => {
 	// handle batch_form submit
 	$('#batch_form').submit((event) => {
 		event.preventDefault();
+
+		const formInfo = $('#batch_form').serializeArray();
+
+		chrome.tabs.query({ active: true, currentWindow: true }, (results) => {
+			console.log('tab id: ' + results[0].id);
+			chrome.tabs.sendMessage(results[0].id, { storeInfo: storeInfo, formInfo: formInfo }, (response) => {
+				console.log(response);
+			});
+		});
 	});
 });
