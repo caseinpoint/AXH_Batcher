@@ -15,11 +15,11 @@ $(document).ready(() => {
 	$('#batch_form').submit((event) => {
 		event.preventDefault();
 
-		const formInfo = $('#batch_form').serializeArray();
+		const batchInfo = $('#batch_form').serializeArray();
 
 		chrome.tabs.query({ active: true, currentWindow: true }, (results) => {
 			console.log('tab id: ' + results[0].id);
-			chrome.tabs.sendMessage(results[0].id, { storeInfo: storeInfo, formInfo: formInfo }, (response) => {
+			chrome.tabs.sendMessage(results[0].id, { storeInfo: storeInfo, batchInfo: batchInfo }, (response) => {
 				console.log(response);
 			});
 		});
