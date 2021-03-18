@@ -5,17 +5,14 @@ $(document).ready(() => {
 		storeInfo = result;
 	});
 
-	// build csv and return encoded URI
-	function getCSV(dropoffInfo, numBags, numBoxes) {
-		const csvColumns = 'pickup_street,pickup_street2,pickup_city,pickup_state,pickup_zipcode,order_id,dropoff_street,dropoff_street2,dropoff_city,dropoff_state,dropoff_zipcode,dropoff_earliest_datetime,dropoff_latest_datetime,dropoff_buffer,customer_name,customer_email,customer_phone_number,pickup_notes,dropoff_notes,delivery_items,signature_required,delivery_proof_photo_required,sms_enabled,dimension_unit,height,width,length,weight_unit,weight';
-
-	}
-
 	// handle batch_form submit
 	$('#batch_form').submit((event) => {
 		event.preventDefault();
 
-		const batchInfo = $('#batch_form').serializeArray();
+		var batchInfo = {};
+		batchInfo['numBags'] = parseInt($('#numBags').val());
+		batchInfo['numBoxes'] = parseInt($('#numBoxes').val());
+		batchInfo['frozen'] = ($('#batch_form').serializeArray().length == 3) ? true : false;
 
 		chrome.tabs.query({ active: true, currentWindow: true }, (results) => {
 			console.log('tab id: ' + results[0].id);
