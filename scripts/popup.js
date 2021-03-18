@@ -15,8 +15,11 @@ $(document).ready(() => {
 		batchInfo['frozen'] = ($('#batch_form').serializeArray().length == 3) ? true : false;
 
 		if (batchInfo['numBags'] === 0 && batchInfo['numBoxes'] === 0) {
-			// TODO: display validation error
+			$('#error').removeClass('visually-hidden');
 		} else {
+			if (!$('#error').hasClass('visually-hidden')) {
+				$('#error').addClass('visually-hidden');
+			}
 			chrome.tabs.query({ active: true, currentWindow: true }, (results) => {
 				console.log('tab id: ' + results[0].id);
 				chrome.tabs.sendMessage(results[0].id, { storeInfo: storeInfo, batchInfo: batchInfo }, (response) => {

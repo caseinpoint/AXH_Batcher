@@ -11,13 +11,13 @@ chrome.runtime.onInstalled.addListener(() => {
 		console.log('defaults set');
 	});
 
-	// extension only works on the printOrderInvoice page
-	// chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
-	// 	chrome.declarativeContent.onPageChanged.addRules([{
-	// 		conditions: [new chrome.declarativeContent.PageStateMatcher({
-	// 			pageUrl: {queryContains: 'printOrderInvoice'},
-	// 		})],
-	// 		actions: [new chrome.declarativeContent.ShowPageAction()]
-	// 	}]);
-	// });
+	extension only works on the printOrderInvoice page
+	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+		chrome.declarativeContent.onPageChanged.addRules([{
+			conditions: [new chrome.declarativeContent.PageStateMatcher({
+				pageUrl: {queryContains: 'printOrderInvoice'},
+			})],
+			actions: [new chrome.declarativeContent.ShowPageAction()]
+		}]);
+	});
 });

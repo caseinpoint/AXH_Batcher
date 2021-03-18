@@ -7,8 +7,8 @@
 		"scripts": ["scripts/background.js"],
 		"persistent": false
 	},
-	/* "page_action": { */
-	"browser_action": {
+	/* "browser_action": { */
+	"page_action": {
 		"default_title": "AXH Batcher",
 		"default_popup": "popup.html",
 		"default_icon": {
@@ -17,8 +17,8 @@
 		}
 	},
 	"commands": {
-		/* "_execute_page_action": { */
-		"_execute_browser_action": {
+		/* "_execute_browser_action": { */
+		"_execute_page_action": {
 			"suggested_key": {
 				"default": "Ctrl+B",
 				"mac": "MacCtrl+B"
@@ -27,8 +27,8 @@
 	},
 	"content_scripts": [
 		{
-			/* "matches": ["https://*.mybigcommerce.com/*"], */
-			"matches": ["<all_urls>"],
+			/* "matches": ["<all_urls>"], */
+			"matches": ["https://*.mybigcommerce.com/*"],
 			"run_at": "document_idle",
 			"js": ["./scripts/jquery-3.6.0.min.js", "./scripts/content.js"]
 		}
