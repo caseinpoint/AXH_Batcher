@@ -30,7 +30,7 @@
 			/* "matches": ["https://*.mybigcommerce.com/*"], */
 			"matches": ["<all_urls>"],
 			"run_at": "document_idle",
-			"js": ["./scripts/content.js"]
+			"js": ["./scripts/jquery-3.6.0.min.js", "./scripts/content.js"]
 		}
 	],
 	"options_page": "options.html",
