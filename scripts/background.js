@@ -7,11 +7,9 @@ chrome.runtime.onInstalled.addListener(() => {
 		pickup_zipcode: '94611',
 		storeNumber: '3058',
 		storePhone: '510-597-1234'
-	}, () => {
-		console.log('defaults set');
-	});
+	}, () => { console.log('defaults set'); });
 
-	extension only works on the printOrderInvoice page
+	// extension only works on the printOrderInvoice page:
 	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
 		chrome.declarativeContent.onPageChanged.addRules([{
 			conditions: [new chrome.declarativeContent.PageStateMatcher({
