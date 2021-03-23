@@ -88,7 +88,7 @@ $(document).ready(() => {
 		// last number for mobile if exists, storePhone if no matches:
 		invoiceInfo['customer_phone_number'] = (phoneMatch !== null) ? phoneMatch[phoneMatch.length - 1] : storeInfo['storePhone'];
 
-		// AXH requested datetime format: m/d/yyyy hh:mm (24hr)
+		// AXH sample csv datetime format: m/d/yyyy hh:mm (24hr)
 		var dateSplit = addressSplit[addressSplit.length-1].split(' ');
 		var date = MONTHS[dateSplit[4].slice(0,-1)] + '/'; // month (slice the comma)
 		date += dateSplit[3] + '/'; // day
