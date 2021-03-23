@@ -44,7 +44,7 @@ $(document).ready(() => {
 		var hiddenElement = document.createElement('a');
 		hiddenElement.href = 'data:text/csv/charset=utf-8,' + encodeURI(csvText);
 		hiddenElement.target = '_blank';
-		hiddenElement.download = allInfo['order_id'] + '.csv';
+		hiddenElement.download = allInfo['order_id'].replace('/', '_') + '.csv';
 		hiddenElement.click();
 	}
 
