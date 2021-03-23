@@ -40,6 +40,9 @@ $(document).ready(() => {
 		boxLine += '\n';
 		for (let box = 0; box < batchInfo['numBoxes']; box++) csvText += boxLine;
 
+		// encodeURI gets tripped up on hashtags:
+		csvText = csvText.replaceAll('#', '♯');
+
 		// make .csv file and download:
 		var hiddenElement = document.createElement('a');
 		hiddenElement.href = 'data:text/csv/charset=utf-8,' + encodeURI(csvText);
