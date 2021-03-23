@@ -22,26 +22,27 @@ $(document).ready(() => {
 		allInfo['height'] = allInfo['width'] = allInfo['length'] = allInfo['weight'] = '';
 		allInfo['pickup_notes'] = '';
 
-		var csv = CSV_COLUMNS.join(',') + '\n';
+		var csvText = CSV_COLUMNS.join(',') + '\n';
 
-		var bagLine = allInfo[CSV_COLUMNS[0]];
 		allInfo['delivery_items'] = 'Bag';
+		var bagLine = allInfo[CSV_COLUMNS[0]];
 		for (let i = 1; i < CSV_COLUMNS.length; i++) {
 			bagLine += ',' + allInfo[CSV_COLUMNS[i]];
 		}
 		bagLine += '\n';
-		for (let bag = 0; bag < batchInfo['numBags']; bag++) csv += bagLine;
+		for (let bag = 0; bag < batchInfo['numBags']; bag++) csvText += bagLine;
 
-		var boxLine = allInfo[CSV_COLUMNS[0]];
 		allInfo['delivery_items'] = 'Box';
+		var boxLine = allInfo[CSV_COLUMNS[0]];
 		for (let i = 1; i < CSV_COLUMNS.length; i++) {
 			boxLine += ',' + allInfo[CSV_COLUMNS[i]];
 		}
 		boxLine += '\n';
-		for (let box = 0; box < batchInfo['numBoxes']; box++) csv += boxLine;
+		for (let box = 0; box < batchInfo['numBoxes']; box++) csvText += boxLine;
 
+		// make .csv file and download:
 		var hiddenElement = document.createElement('a');
-		hiddenElement.href = 'data:text/csv/charset=utf-8,' + encodeURI(csv);
+		hiddenElement.href = 'data:text/csv/charset=utf-8,' + encodeURI(csvText);
 		hiddenElement.target = '_blank';
 		hiddenElement.download = allInfo['order_id'] + '.csv';
 		hiddenElement.click();
