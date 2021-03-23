@@ -107,7 +107,6 @@ $(document).ready(() => {
 	// listen for message from extension:
 	chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 		sendResponse('"content.js" recieved data');
-		console.log(msg);
 
 		var invoiceInfo = scrapeInvoice(msg['storeInfo']);
 
