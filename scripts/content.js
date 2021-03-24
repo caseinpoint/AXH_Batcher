@@ -27,7 +27,8 @@ $(document).ready(() => {
 		allInfo['delivery_items'] = 'Bag';
 		var bagLine = allInfo[CSV_COLUMNS[0]];
 		for (let i = 1; i < CSV_COLUMNS.length; i++) {
-			bagLine += ',' + allInfo[CSV_COLUMNS[i]];
+			// replaceAll commas with semicolons for .csv:
+			bagLine += ',' + allInfo[CSV_COLUMNS[i]].replaceAll(',', ';');
 		}
 		bagLine += '\n';
 		for (let bag = 0; bag < batchInfo['numBags']; bag++) csvText += bagLine;
@@ -35,7 +36,8 @@ $(document).ready(() => {
 		allInfo['delivery_items'] = 'Box';
 		var boxLine = allInfo[CSV_COLUMNS[0]];
 		for (let i = 1; i < CSV_COLUMNS.length; i++) {
-			boxLine += ',' + allInfo[CSV_COLUMNS[i]];
+			// replaceAll commas with semicolons for .csv:
+			boxLine += ',' + allInfo[CSV_COLUMNS[i]].replaceAll(',', ';');
 		}
 		boxLine += '\n';
 		for (let box = 0; box < batchInfo['numBoxes']; box++) csvText += boxLine;
@@ -69,7 +71,7 @@ $(document).ready(() => {
 		var addressSplit = $('.ShippingAddress')[0].innerText.split('\n');
 
 		// replaceAll (potential) commas with semicolons for csv:
-		invoiceInfo['dropoff_street'] = addressSplit[2].replaceAll(',', ';');
+		invoiceInfo['dropoff_street'] = addressSplit[2];
 
 		var idxUS = addressSplit.indexOf('United States');
 
@@ -78,13 +80,13 @@ $(document).ready(() => {
 
 		var cityStateZip = addressSplit[idxUS - 1].split(', ');
 
-		invoiceInfo['dropoff_city'] = cityStateZip[0].replaceAll(',', ';');
+		invoiceInfo['dropoff_city'] = cityStateZip[0];
 
 		invoiceInfo['dropoff_state'] = cityStateZip[1].split(' ')[0];
 
 		invoiceInfo['dropoff_zipcode'] = cityStateZip[1].split(' ')[1];
 
-		invoiceInfo['customer_name'] = addressSplit[1].replaceAll(',', ';');
+		invoiceInfo['customer_name'] = addressSplit[1];
 
 		invoiceInfo['customer_email'] = $('.BillingAddress').text().match(REGEX_EMAIL)[0];
 
@@ -103,7 +105,7 @@ $(document).ready(() => {
 		invoiceInfo['dropoff_latest_datetime'] = date + get24Hr(dateSplit[10]);
 
 		var idxNotes = addressSplit.indexOf('Special Instructions for Delivery') + 1;
-		invoiceInfo['dropoff_notes'] = (addressSplit[idxNotes] !== 'Delivery Preference') ? addressSplit[idxNotes].replaceAll(',', ';') : '';
+		invoiceInfo['dropoff_notes'] = (addressSplit[idxNotes] !== 'Delivery Preference') ? addressSplit[idxNotes] : '';
 
 		return invoiceInfo;
 	}
