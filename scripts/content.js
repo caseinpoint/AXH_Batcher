@@ -14,7 +14,7 @@ $(document).ready(() => {
 		var allInfo = {...storeInfo, ...invoiceInfo};
 
 		// hardcode certain values:
-		allInfo['dropoff_buffer'] = '60';
+		allInfo['dropoff_buffer'] = '';
 		allInfo['signature_required'] = '0';
 		allInfo['delivery_proof_photo_required'] = allInfo['sms_enabled'] = '1';
 		allInfo['dimension_unit'] = 'in';
@@ -78,11 +78,13 @@ $(document).ready(() => {
 		// idxUS === 5 indicates dropoff_street2 exists:
 		invoiceInfo['dropoff_street2'] = (idxUS === 5) ? addressSplit[3].replaceAll(',', ';') : '';
 
+		// [city, state zip]:
 		var cityStateZip = addressSplit[idxUS - 1].split(', ');
 
 		invoiceInfo['dropoff_city'] = cityStateZip[0];
 
-		invoiceInfo['dropoff_state'] = cityStateZip[1].split(' ')[0];
+		// invoiceInfo['dropoff_state'] = cityStateZip[1].split(' ')[0];
+		invoiceInfo['dropoff_state'] = 'CA';
 
 		invoiceInfo['dropoff_zipcode'] = cityStateZip[1].split(' ')[1];
 
