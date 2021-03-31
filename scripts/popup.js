@@ -1,6 +1,6 @@
 $(document).ready(() => {
 	// get pickup info from settings:
-	var storeInfo = {};
+	let storeInfo = {};
 	chrome.storage.sync.get(['pickup_street', 'pickup_street2', 'pickup_city', 'pickup_state', 'pickup_zipcode', 'storeNumber', 'storePhone'], (result) => {
 		storeInfo = result;
 	});
@@ -9,7 +9,7 @@ $(document).ready(() => {
 	$('#batch_form').submit((event) => {
 		event.preventDefault();
 
-		var batchInfo = {};
+		let batchInfo = {};
 		batchInfo['numBags'] = parseInt($('#numBags').val());
 		batchInfo['numBoxes'] = parseInt($('#numBoxes').val());
 		batchInfo['frozen'] = ($('#batch_form').serializeArray().length == 3) ? true : false;
