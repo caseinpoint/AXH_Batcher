@@ -24,8 +24,11 @@ $(document).ready(() => {
 
 		let csvText = CSV_COLUMNS.join(',') + '\n';
 
-		allInfo['delivery_items'] = batchInfo['numBags'] + ' Bag(s); ' + batchInfo['numBoxes'] + ' Box(es)';
-		if (batchInfo['frozen']) allInfo['delivery_items'] += ' [frozen]';
+		allInfo['delivery_items'] = '';
+		if (batchInfo['numBags'] > 0) allInfo['delivery_items'] += batchInfo['numBags'] + ' Bag(s) ';
+		if (batchInfo['numBoxes'] > 0) allInfo['delivery_items'] += batchInfo['numBoxes'] + ' Box(es) ';
+		if (batchInfo['frozen']) allInfo['delivery_items'] += '[frozen]';
+
 		let line = allInfo[CSV_COLUMNS[0]];
 		for (let i = 1; i < CSV_COLUMNS.length; i++) {
 			// replaceAll commas with semicolons for .csv:
