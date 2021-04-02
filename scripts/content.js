@@ -63,7 +63,6 @@ $(document).ready(() => {
 		invoiceInfo['order_id'] = $('.InvoiceTitle').text().match(REGEX_ID)[0] + '/' + storeInfo['storeNumber'];
 
 		let addressSplit = $('.ShippingAddress')[0].innerText.split('\n');
-		console.log(addressSplit);
 
 		// replaceAll (potential) commas with semicolons for csv:
 		invoiceInfo['dropoff_street'] = addressSplit[2];
