@@ -63,6 +63,7 @@ $(document).ready(() => {
 		invoiceInfo['order_id'] = $('.InvoiceTitle').text().match(REGEX_ID)[0] + '/' + storeInfo['storeNumber'];
 
 		let addressSplit = $('.ShippingAddress')[0].innerText.split('\n');
+		console.log(addressSplit);
 
 		// replaceAll (potential) commas with semicolons for csv:
 		invoiceInfo['dropoff_street'] = addressSplit[2];
@@ -91,7 +92,8 @@ $(document).ready(() => {
 		invoiceInfo['customer_phone_number'] = (phoneMatch !== null) ? phoneMatch[phoneMatch.length - 1] : storeInfo['storePhone'];
 
 		// AXH sample csv datetime format: m/d/yyyy hh:mm (24hr)
-		let dateSplit = addressSplit[addressSplit.length-1].split(' ');
+		idxDate = addressSplit.findIndex((e) => e.startsWith('Delivery date:'));
+		let dateSplit = addressSplit[idxDate].split(' ');
 		let date = MONTHS[dateSplit[4].slice(0,-1)] + '/'; // month (slice the comma)
 		date += dateSplit[3] + '/'; // day
 		date += dateSplit[5].slice(0,-1) + ' '; // year (slice the period)
