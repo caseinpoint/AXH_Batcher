@@ -64,13 +64,12 @@ $(document).ready(() => {
 
 		let addressSplit = $('.ShippingAddress')[0].innerText.split('\n');
 
-		// replaceAll (potential) commas with semicolons for csv:
 		invoiceInfo['dropoff_street'] = addressSplit[2];
 
 		let idxUS = addressSplit.indexOf('United States');
 
 		// idxUS === 5 indicates dropoff_street2 exists:
-		invoiceInfo['dropoff_street2'] = (idxUS === 5) ? addressSplit[3].replaceAll(',', ';') : '';
+		invoiceInfo['dropoff_street2'] = (idxUS === 5) ? addressSplit[3] : '';
 
 		// [city, state zip]:
 		let cityStateZip = addressSplit[idxUS - 1].split(', ');
