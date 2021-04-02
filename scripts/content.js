@@ -77,7 +77,7 @@ $(document).ready(() => {
 		invoiceInfo['dropoff_city'] = cityStateZip[0];
 
 		// invoiceInfo['dropoff_state'] = cityStateZip[1].split(' ')[0];
-		invoiceInfo['dropoff_state'] = 'CA';
+		invoiceInfo['dropoff_state'] = 'CA'; // 'California' too long for label
 
 		invoiceInfo['dropoff_zipcode'] = cityStateZip[1].split(' ')[1];
 
