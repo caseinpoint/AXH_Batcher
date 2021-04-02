@@ -25,8 +25,16 @@ $(document).ready(() => {
 		let csvText = CSV_COLUMNS.join(',') + '\n';
 
 		allInfo['delivery_items'] = '';
-		if (batchInfo['numBags'] > 0) allInfo['delivery_items'] += batchInfo['numBags'] + ' Bag(s) ';
-		if (batchInfo['numBoxes'] > 0) allInfo['delivery_items'] += batchInfo['numBoxes'] + ' Box(es) ';
+		if (batchInfo['numBags'] > 0) {
+			allInfo['delivery_items'] += batchInfo['numBags'] + ' Bag';
+			if (batchInfo['numBags'] > 1) allInfo['delivery_items'] += 's';
+			allInfo['delivery_items'] += '  ';
+		}
+		if (batchInfo['numBoxes'] > 0) {
+			allInfo['delivery_items'] += batchInfo['numBoxes'] + ' Box';
+			if (batchInfo['numBoxes'] > 1) allInfo['delivery_items'] += 'es';
+			allInfo['delivery_items'] += '  ';
+		}
 		if (batchInfo['frozen']) allInfo['delivery_items'] += '[frozen]';
 
 		let line = allInfo[CSV_COLUMNS[0]];
